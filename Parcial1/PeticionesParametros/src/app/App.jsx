@@ -24,7 +24,7 @@ function App() {
   }
   return (
     <main className="main">
-      <h1>Tipos de peticiones en JS</h1>
+      <h1>Peticiones con parametros en JS</h1>
       <p className="me">Alan Israel Flores Cabrera <span>19100179</span></p>
       <header className="action__btns">
         <select onChange={handleChange} name='parameter' className='action__input' placeholder='Ingresa un parametro para buscar' >
