@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getAPIDataByAwait, getAPIDataByAxios, getAPIDataByJQuery, getAPIDataByPromise, getAPIDataByXML } from "../utils/jsFetchMethods";
 import { Button } from "./components/Button";
 import { FetchData } from "./components/FetchData";
 
 export function App() {
   const [fetchData, setFetchData] = useState([])
-  useEffect(() => {
-    console.log(fetchData)
-  }, [fetchData])
   const handlePushData = (newData) => {
     const newArr = [...fetchData, newData]
     setFetchData(newArr)

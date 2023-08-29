@@ -1,0 +1,23 @@
+{
+  "name": "paquetesnpm",
+  "version": "2.0.0",
+  "description": "",
+  "type": "module",
+  "main": "paquete.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AlanF20/API-REST.git"
+  },
+  "keywords": [
+    "Paquete"
+  ],
+  "author": "Alan Israel Flores Cabrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanF20/API-REST/issues"
+  },
+  "homepage": "https://github.com/AlanF20/API-REST#readme"
+}
