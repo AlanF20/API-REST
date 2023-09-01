@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS</title>
+</head>
+<body>
+  <h1 class="response"></h1>
+</body>
+<script defer>
+  const fetchMethod = async() => {
+    const result = await fetch('http://localhost:8080/user/1')
+    const response = document.querySelector('.response')
+    const name = await result.json()
+    response.innerHTML = name.name
+    return result
+  }
+  fetchMethod()
+</script>
+</html>
