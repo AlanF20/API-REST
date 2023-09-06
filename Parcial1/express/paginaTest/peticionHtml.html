@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peticion a Express</title>
+</head>
+
+<body>
+  <main class="cont">
+  </main>
+  <form target="resultado" method="get" action="http://localhost:3000/">
+    <input class="name" type="text" placeholder="Ingrese informacion">
+    <input class="fetch" type="submit" value="Enviar informacion">
+  </form>
+  <iframe name="resultado"></iframe>
+  <script>
+    const getServerData = async () => {
+      const result = await fetch('http://localhost:3000/')
+      const response = await result.text()
+      console.log(response)
+      return response
+    }
+    async function printData() {
+      const main = document.querySelector('.cont')
+      main.innerHTML += await getServerData()
+    }
+    const txtInput = document.querySelector('.name')
+    const btnFetch = document.querySelector('.fetch')
+    btnFetch.addEventListener('click', async (e) => {
+      e.preventDefault()
+      const alumno = txtInput.value
+      const fetching = await fetch(`http://localhost:3000/${alumno}`)
+      const result = await fetching.text()
+    })
+    printData()
+  </script>
+</body>
+
+</html>
