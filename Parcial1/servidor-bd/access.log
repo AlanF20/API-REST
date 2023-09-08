@@ -1,0 +1,7 @@
+::ffff:127.0.0.1 - - [06/Sep/2023:13:42:46 +0000] "GET / HTTP/1.1" 200 53 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [06/Sep/2023:13:42:50 +0000] "GET / HTTP/1.1" 200 53 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [07/Sep/2023:13:43:37 +0000] "GET / HTTP/1.1" 200 61 "-" "curl/8.1.2"
+::ffff:127.0.0.1 - - [07/Sep/2023:13:47:05 +0000] "POST /alumnos HTTP/1.1" 200 45 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [07/Sep/2023:13:49:20 +0000] "PUT /alumnos/1 HTTP/1.1" 404 148 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [07/Sep/2023:13:49:30 +0000] "PUT /alumnos/1 HTTP/1.1" 404 148 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [08/Sep/2023:13:12:36 +0000] "POST /alumnos HTTP/1.1" 200 45 "-" "Thunder Client (https://www.thunderclient.com)"
