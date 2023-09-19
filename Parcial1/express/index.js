@@ -33,6 +33,9 @@ server
     const encontrado = nombresAlumnos.find(alu => alu === alumno)
     res.send(encontrado).status(200)
   })
+  .get('/alumnos', (req,res)=> {
+    res.jsonp(nombresAlumnos)
+  })
   .post('/', (req, res) => {
     const { name } = req.body
     res.status(201).send('Insercion exitosa')
