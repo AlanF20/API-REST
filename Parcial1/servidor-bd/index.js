@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import fs from 'fs'
 import path from 'path'
 import connection from './db/connection.js'
+import expressBasicAuth from 'express-basic-auth'
 const server = express()
 
 const accessLogStream = fs.createWriteStream(path.join('./', 'access.log'), { flags: 'a' })
@@ -11,6 +12,9 @@ server
   .use(express.json())
   .use(morgan('combined', { stream: accessLogStream }))
   .use(cors())
+  .use(expressBasicAuth({
+    users: { 'admin': 'supersecret' }
+  }))
   .get('/alumnos', async (req, res) => {
     try {
       const [users] = await connection.promise().query('SELECT * FROM alumnos')
