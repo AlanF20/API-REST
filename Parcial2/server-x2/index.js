@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import { body, check, checkSchema, validationResult } from 'express-validator'
 import options from './validateSchema.js'
+import exampleRouter from './router/example.routes.js'
 const server = express()
 
 // const storage = multer.diskStorage({
@@ -18,6 +19,7 @@ server
   .use(express.json())
   .use(cors())
   .use(express.urlencoded({ extended: true }))
+  .use('/example', exampleRouter)
   // .use(upload.single('file'))
   // .post('/multer', async (req, res) => {
   //   try {
