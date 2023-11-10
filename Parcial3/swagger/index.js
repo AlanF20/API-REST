@@ -28,6 +28,7 @@ server
  * @swagger
  * /alumnos:
  *   get:
+ *     summary: Obtener alumnos
  *     description: Ruta para obtener los registros de los alumnos desde la base de datos.!
  *     responses:
  *       200:
@@ -51,6 +52,27 @@ server
       res.status(404).json({ error: err.message })
     }
   })
+    /**
+ * @swagger
+ * /alumnos:
+ *   post:
+ *     summary: Añadir un nuevo registro de alumno.
+ *     description: Ruta para añadir un registro de alumno a la base de datos.
+ *     parameters:
+ *       - in: body
+ *         name: nombre
+ *         required: true
+ *         description: Nombre del alumno.
+ *       - in: body
+ *         name: numeroControl
+ *         required: true
+ *         description: Numero de control del alumno.
+ *         type: number 
+ *       
+ *     responses:
+ *       201:
+ *         description: Regresa un mensaje de confirmacion sobre el estado de la peticion.
+ */
   .post('/alumnos', async (req, res) => {
     try {
       const { nombre, numeroControl } = req.body
