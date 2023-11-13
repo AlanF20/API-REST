@@ -3,27 +3,23 @@ import cors from 'cors'
 import connection from './db/connection.js'
 import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
+import swaggerConfig from './swaggerConfig.json' assert {type: "json"}
+import { SwaggerTheme } from 'swagger-themes'
+
 const server = express()
-
-const options = {
-  failOnErrors: true, // Whether or not to throw when parsing errors. Defaults to false.
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Mi documentacion',
-      version: '1.0.0',
-    },
-  },
-  apis: ['./index.js'],
-};
-
-const openapiSpecification = swaggerJSDoc(options);
+const options = swaggerConfig
+const theme = new SwaggerTheme('v3')
+const openapiSpecification = swaggerJSDoc(options)
+const styleOptions = {
+  explorer: true,
+  customCss: theme.getBuffer('dark')
+}
 console.log(openapiSpecification)
 server
   .use(express.json())
   .use(cors())
   .use('/api-docs', swaggerUi.serve)
-  .get('/api-docs',  swaggerUi.setup(openapiSpecification))
+  .get('/api-docs', swaggerUi.setup(openapiSpecification, styleOptions))
   /**
  * @swagger
  * /alumnos:
@@ -52,27 +48,27 @@ server
       res.status(404).json({ error: err.message })
     }
   })
-    /**
- * @swagger
- * /alumnos:
- *   post:
- *     summary: Añadir un nuevo registro de alumno.
- *     description: Ruta para añadir un registro de alumno a la base de datos.
- *     parameters:
- *       - in: body
- *         name: nombre
- *         required: true
- *         description: Nombre del alumno.
- *       - in: body
- *         name: numeroControl
- *         required: true
- *         description: Numero de control del alumno.
- *         type: number 
- *       
- *     responses:
- *       201:
- *         description: Regresa un mensaje de confirmacion sobre el estado de la peticion.
- */
+  /**
+* @swagger
+* /alumnos:
+*   post:
+*     summary: Añadir un nuevo registro de alumno.
+*     description: Ruta para añadir un registro de alumno a la base de datos.
+*     parameters:
+*       - in: body
+*         name: nombre
+*         required: true
+*         description: Nombre del alumno.
+*       - in: body
+*         name: numeroControl
+*         required: true
+*         description: Numero de control del alumno.
+*         type: number 
+*       
+*     responses:
+*       201:
+*         description: Regresa un mensaje de confirmacion sobre el estado de la peticion.
+*/
   .post('/alumnos', async (req, res) => {
     try {
       const { nombre, numeroControl } = req.body

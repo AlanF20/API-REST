@@ -1,0 +1,13 @@
+{
+  "failOnErrors": true,
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Mi documentacion",
+      "version": "1.0.0"
+    }
+  },
+  "apis": [
+    "./index.js"
+  ]
+}
