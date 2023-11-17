@@ -5,6 +5,7 @@ import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 import swaggerConfig from './swaggerConfig.json' assert {type: "json"}
 import { SwaggerTheme } from 'swagger-themes'
+import OpenAPISnippet from 'openapi-snippet'
 
 const server = express()
 const options = swaggerConfig
@@ -14,7 +15,15 @@ const styleOptions = {
   explorer: true,
   customCss: theme.getBuffer('dark')
 }
+const targets = ['node_unirest', 'c']
 console.log(openapiSpecification)
+let results
+try{
+  results = OpenAPISnippet.getSnippets(openapiSpecification, targets)
+  console.log(results)
+}catch(err){
+  console.log(err.message)
+}
 server
   .use(express.json())
   .use(cors())
@@ -59,6 +68,7 @@ server
 *         name: nombre
 *         required: true
 *         description: Nombre del alumno.
+*         type: string
 *       - in: body
 *         name: numeroControl
 *         required: true
@@ -100,6 +110,8 @@ server
     } catch (err) {
       res.status(400).json({ error: err.message })
     }
+  }).get('/alumnos/docs', (req, res) => {
+    res.json(results).status(200)
   })
 server.listen(3000, () => {
   console.log('servidor en 3000')

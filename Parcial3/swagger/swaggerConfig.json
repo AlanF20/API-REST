@@ -9,5 +9,33 @@
   },
   "apis": [
     "./index.js"
-  ]
+  ],
+  "servers": [
+    {
+      "url": "localhost:3000"
+    }
+  ],
+  "paths": {
+    "/alumnos": {
+      "get": {
+        "summary": "Regresa una lista de alumnos.",
+        "description": "Endpoint para obtener la informacion de todos los alumnos.",
+        "responses": {
+          "200": {
+            "description": "Arreglo de objetos JSON de los alumnos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
