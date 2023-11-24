@@ -7,7 +7,7 @@ import swaggerConfig from './swaggerConfig.json' assert {type: "json"}
 import { SwaggerTheme } from 'swagger-themes'
 import OpenAPISnippet from 'openapi-snippet'
 
-const server = express()
+export const server = express()
 const options = swaggerConfig
 const theme = new SwaggerTheme('v3')
 const openapiSpecification = swaggerJSDoc(options)
@@ -16,11 +16,9 @@ const styleOptions = {
   customCss: theme.getBuffer('dark')
 }
 const targets = ['node_unirest', 'c']
-console.log(openapiSpecification)
 let results
 try{
   results = OpenAPISnippet.getSnippets(openapiSpecification, targets)
-  console.log(results)
 }catch(err){
   console.log(err.message)
 }
